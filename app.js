@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 var app = require('express')();
-const server = require('http').Server(app);
+var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
 var clientes = [];
