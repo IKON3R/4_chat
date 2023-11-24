@@ -40,10 +40,11 @@ app.post('/send', function (req, res) {
   return res.json({text: 'Mensaje enviado.'});
 });
 
-io.on('connection', socket => {
+io.on('connection', async (socket) => {
   console.log('Socket conectado', socket.id);
   socket.on('disconnect', () => {
     clientes = clientes.filter(cliente => cliente.id != socket.id);
     io.emit('socket_desconectado', {texto: 'Socket desconectado.', id: socket.id});
   });
+  await longRunningOperation();
 });
