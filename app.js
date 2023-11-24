@@ -2,7 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var app = require('express')();
 var server = require('https').Server(app);
-var io = require('socket.io')(server);
+import { Server } from "socket.io";
+
+const io = new Server({
+  path: "/logica.js"
+});
+
+io.listen(3000);
 
 var clientes = [];
 
@@ -37,10 +43,11 @@ app.post('/send', function (req, res) {
   return res.json({text: 'Mensaje enviado.'});
 });
 
-io.on('connection', socket => {
+io.on('connection', async (socket) => {
   console.log('Socket conectado', socket.id);
   socket.on('disconnect', () => {
     clientes = clientes.filter(cliente => cliente.id != socket.id);
     io.emit('socket_desconectado', {texto: 'Socket desconectado.', id: socket.id});
   });
+  await longRunningOperation();
 });
