@@ -1,4 +1,4 @@
-var socket = io.connect('http://192.168.100.16:8080');
+var socket = io.connect('https://segundoint.onrender.com/');
 var list = document.querySelector('#lista-users');
 var username = window.location.pathname.replace('/chat/', '');
 var clientes = [];
