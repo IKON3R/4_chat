@@ -3,10 +3,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const https = require('https');
 const app = express();
-const server = https.createServer({
-  key: fs.readFileSync('https://api.render.com/deploy/srv-clg2jo6r45ec739acmlg?key=p_a3evH_pPI'),
-  cert: fs.readFileSync('ruta/a/tu/certificado.crt')
-}, app);
+const server = http.createServer(app);
 const io = require('socket.io')(server);
 
 var clientes = [];
@@ -15,7 +12,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const PORT = 443;
+const PORT = 3000;
 server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`Servidor iniciado en ${PORT}`);
 });

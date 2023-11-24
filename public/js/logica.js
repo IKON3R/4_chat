@@ -1,4 +1,4 @@
-const socket = io("ws://segundoint.onrender.com:443", {
+const socket = io("ws://segundoint.onrender.com:3000", {
   transports: ["websocket"]
 });
 var list = document.querySelector('#lista-users');
