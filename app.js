@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 var app = require('express')();
-var server = require('http').Server(app);
+const server = require('http').Server(app);
 var io = require('socket.io')(server);
 
 var clientes = [];
@@ -10,7 +10,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const PORT = 'https://segundoint.onrender.com';
-const server = app.listen(PORT, '0.0.0.0', () => {
+server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`Servidor iniciado en ${PORT}`);
 });
 
