@@ -11,7 +11,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const PORT = segundoint.onrender.com || 8080; // Configuración del puerto
+const PORT = "segundoint.onrender.com" || 8080; // Configuración del puerto
 
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`Servidor iniciado en ${PORT}`);
